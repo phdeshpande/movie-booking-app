@@ -1,15 +1,37 @@
 import './App.css';
-import { Button } from '@material-ui/core';
+import React from 'react';
+import { 
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+import SignUp from '../src/components/SignUp';
+import SignIn from '../src/components/SignIn';
+import Header from "../src/components/shared/header";
+import MoviesList from './components/Movies/List';
 
-function App () {
+
+function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1>Movie Booking</h1>
-        <div>
-          <Button variant='contained' color='primary'>Hello World</Button>
-        </div>
+        <Header />
       </header>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path='/'>
+              <SignUp />
+            </Route>
+            <Route path='/signin'>
+              <SignIn />
+            </Route>
+            <Route path='/movies'>
+              <MoviesList />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
